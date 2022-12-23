@@ -7,4 +7,7 @@ package com.wzw.simple.controller;
  * @date 2022/12/23
  */
 public class HelloController {
+    public static void main(String[] args) {
+
+    }
 }
