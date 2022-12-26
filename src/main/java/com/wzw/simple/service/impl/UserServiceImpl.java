@@ -1,5 +1,6 @@
 package com.wzw.simple.service.impl;
 
+import com.github.pagehelper.Page;
 import com.wzw.simple.service.UserService;
 import com.wzw.simple.user.mapper.UserMapper;
 import com.wzw.simple.user.model.User;
@@ -30,6 +31,13 @@ public class UserServiceImpl implements UserService {
     public Boolean save(User user) {
         int save = userMapper.save(user);
         return save == 1;
+    }
+
+    @Override
+    public Page<User> page(String username, Integer pageNo, Integer pageSize) {
+
+
+        return null;
     }
 
 }

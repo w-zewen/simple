@@ -1,11 +1,13 @@
 package com.wzw.simple.controller;
 
+import com.github.pagehelper.Page;
 import com.wzw.simple.bean.Response;
 import com.wzw.simple.service.UserService;
 import com.wzw.simple.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -32,6 +34,14 @@ public class UserController {
     public Response<Boolean> save(@RequestBody User user){
         Boolean r = userService.save(user);
         return Response.success(r);
+    }
+
+    @RequestMapping("page")
+    public Response<Page<User>> page(@RequestParam(name = "username", required = false) String username,
+                                     @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+                                     @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize){
+        Page<User> page = userService.page(username, pageNo, pageSize);
+        return Response.success(page);
     }
 
 }
