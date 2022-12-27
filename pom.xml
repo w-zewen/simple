@@ -78,11 +78,11 @@
             <artifactId>mapper</artifactId>
             <version>4.2.2</version>
         </dependency>
-        <!-- 分页插件 -->
+        <!-- 分页插件 PageHelper Spring Boot Starter -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <version>5.3.2</version>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.4.6</version>
         </dependency>
         <!-- mybatis代码生成器 -->
         <dependency>
@@ -91,6 +91,45 @@
             <version>1.4.1</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- 一个Java实用程序类包，用于java.lang层次结构中的类，或者被认为非常标准以证明存在于java.lang中 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
+<!--        &lt;!&ndash; SLF4J（Java 简单日志外观）的API，用作各种日志框架的简单外观或抽象，允许最终用户在部署时插入所需的日志框架 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-api</artifactId>-->
+<!--            <version>2.0.6</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-log4j12</artifactId>-->
+<!--            <version>2.0.6</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; Logback的核心实现，一个可靠、通用、快速和灵活的日志框架 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>ch.qos.logback</groupId>-->
+<!--            <artifactId>logback-core</artifactId>-->
+<!--            <version>1.4.5</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; 用于Logback的SLF4J API的实现，这是一个可靠、通用、快速和灵活的日志记录框架 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>ch.qos.logback</groupId>-->
+<!--            <artifactId>logback-classic</artifactId>-->
+<!--            <version>1.4.5</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; Logback与Servlet容器（Tomcat、Jetty等）集成以提供HTTP访问日志功能 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>ch.qos.logback</groupId>-->
+<!--            <artifactId>logback-access</artifactId>-->
+<!--            <version>1.4.5</version>-->
+<!--        </dependency>-->
+
 
     </dependencies>
 

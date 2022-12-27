@@ -1,6 +1,6 @@
 package com.wzw.simple.controller;
 
-import com.github.pagehelper.Page;
+import com.wzw.simple.bean.Paging;
 import com.wzw.simple.bean.Response;
 import com.wzw.simple.service.UserService;
 import com.wzw.simple.user.model.User;
@@ -37,10 +37,10 @@ public class UserController {
     }
 
     @RequestMapping("page")
-    public Response<Page<User>> page(@RequestParam(name = "username", required = false) String username,
-                                     @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
-                                     @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize){
-        Page<User> page = userService.page(username, pageNo, pageSize);
+    public Response<Paging<List<User>>> page(@RequestParam(name = "username", required = false) String username,
+                                             @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+                                             @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize){
+        Paging<List<User>> page = userService.page(username, pageNo, pageSize);
         return Response.success(page);
     }
 

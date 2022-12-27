@@ -1,6 +1,6 @@
 package com.wzw.simple.service;
 
-import com.github.pagehelper.Page;
+import com.wzw.simple.bean.Paging;
 import com.wzw.simple.user.model.User;
 
 import java.util.List;
@@ -16,5 +16,5 @@ public interface UserService {
 
     Boolean save(User user);
 
-    Page<User> page(String username, Integer pageNo, Integer pageSize);
+    Paging<List<User>> page(String username, Integer pageNo, Integer pageSize);
 }
