@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
+
+    <property name="logPattern"
+              value="{&quot;date&quot;:&quot;%date{yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS}&quot;,&quot;level&quot;:&quot;%level&quot;,&quot;appName&quot;:&quot;${appName}&quot;,&quot;traceId&quot;:&quot;%traceId&quot;,&quot;swTid&quot;:&quot;%replace(%swTid){'TID',''}&quot;,&quot;thread&quot;:&quot;%thread&quot;,&quot;logger&quot;:&quot;%logger&quot;,&quot;class&quot;:&quot;%class&quot;,&quot;method&quot;:&quot;%method&quot;,&quot;line&quot;:&quot;%line&quot;,&quot;uid&quot;:&quot;%uid&quot;,&quot;cid&quot;:&quot;%cid&quot;,&quot;message&quot;:&quot;%replace(%msg){'&quot;', '`'} %ex&quot;}%n" />
+
+
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- encoders are assigned the type
-             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
-        <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <pattern>
+                    <pattern>
+                        {
+                        "timestamp": "%date{\"yyyy-MM-dd'T'HH:mm:ss,SSSXXX\", UTC}",
+                        "app": "${module_name}",
+                        "version": "${version}",
+                        "env": "${env}",
+                        "host": "${hostname}",
+                        <!--日志级别-->
+                        "level": "%level",
+                        <!--进程ID-->
+                        "pid": "${PID:-}",
+                        "thread": "%thread",
+                        "class": "%logger",
+                        "method": "%method",
+                        "line": "%line",
+                        <!--日志打印的信息-->
+                        "message": "%message",
+                        <!--堆栈异常信息-->
+                        "statck_trace":"%xEx"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
         </encoder>
     </appender>
 

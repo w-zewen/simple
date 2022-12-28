@@ -33,6 +33,7 @@ public class StoreDatabaseConfig {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource());
         sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:store/*.xml"));
+        sqlSessionFactoryBean.getObject().getConfiguration().setDefaultStatementTimeout(1);
         return sqlSessionFactoryBean.getObject();
     }
 

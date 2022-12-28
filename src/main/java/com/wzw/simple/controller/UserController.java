@@ -1,9 +1,11 @@
 package com.wzw.simple.controller;
 
+import com.alibaba.fastjson2.JSONObject;
 import com.wzw.simple.bean.Paging;
 import com.wzw.simple.bean.Response;
 import com.wzw.simple.service.UserService;
 import com.wzw.simple.user.model.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import java.util.List;
  * @author zewen.wang
  * @date 2022/12/26
  */
+@Slf4j
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -41,6 +44,7 @@ public class UserController {
                                              @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
                                              @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize){
         Paging<List<User>> page = userService.page(username, pageNo, pageSize);
+        log.info("page={}", JSONObject.toJSONString(page));
         return Response.success(page);
     }
 
