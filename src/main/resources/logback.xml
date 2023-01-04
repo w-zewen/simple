@@ -1,45 +1,59 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+    <!-- 日志输出目录 -->
+    <property name="logPath" value="${logPath}" />
+    <!-- 读取spring容器中的属性，这里是获取日志打印的级别 -->
+    <springProperty scope="context" name="logLevel" source="logLevel" defaultValue="INFO" />
+    <springProperty scope="context" name="appName" source="appName" />
+    <!-- 自定义logger转换器 -->
+    <conversionRule conversionWord="traceId" converterClass="com.wzw.simple.log.convert.TraceIdConvert"/>
 
+    <!-- 日志打印格式 -->
     <property name="logPattern"
-              value="{&quot;date&quot;:&quot;%date{yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS}&quot;,&quot;level&quot;:&quot;%level&quot;,&quot;appName&quot;:&quot;${appName}&quot;,&quot;traceId&quot;:&quot;%traceId&quot;,&quot;swTid&quot;:&quot;%replace(%swTid){'TID',''}&quot;,&quot;thread&quot;:&quot;%thread&quot;,&quot;logger&quot;:&quot;%logger&quot;,&quot;class&quot;:&quot;%class&quot;,&quot;method&quot;:&quot;%method&quot;,&quot;line&quot;:&quot;%line&quot;,&quot;uid&quot;:&quot;%uid&quot;,&quot;cid&quot;:&quot;%cid&quot;,&quot;message&quot;:&quot;%replace(%msg){'&quot;', '`'} %ex&quot;}%n" />
+              value="{&quot;date&quot;:&quot;%date{yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS}&quot;,&quot;level&quot;:&quot;%level&quot;,&quot;appName&quot;:&quot;${appName}&quot;,&quot;traceId&quot;:&quot;%traceId&quot;,&quot;thread&quot;:&quot;%thread&quot;,&quot;logger&quot;:&quot;%logger&quot;,&quot;class&quot;:&quot;%class&quot;,&quot;method&quot;:&quot;%method&quot;,&quot;line&quot;:&quot;%line&quot;,&quot;message&quot;:&quot;%replace(%msg){'&quot;', '`'} %ex&quot;}%n" />
 
-
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
-            <providers>
-                <pattern>
-                    <pattern>
-                        {
-                        "timestamp": "%date{\"yyyy-MM-dd'T'HH:mm:ss,SSSXXX\", UTC}",
-                        "app": "${module_name}",
-                        "version": "${version}",
-                        "env": "${env}",
-                        "host": "${hostname}",
-                        <!--日志级别-->
-                        "level": "%level",
-                        <!--进程ID-->
-                        "pid": "${PID:-}",
-                        "thread": "%thread",
-                        "class": "%logger",
-                        "method": "%method",
-                        "line": "%line",
-                        <!--日志打印的信息-->
-                        "message": "%message",
-                        <!--堆栈异常信息-->
-                        "statck_trace":"%xEx"
-                        }
-                    </pattern>
-                </pattern>
-            </providers>
+    <!-- 控制台日志 -->
+    <appender name="console" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger.%method:%line - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <logger name="chapters.configuration" level="INFO"/>
+    <!-- 默认日志 -->
+    <appender name="default" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 按照时间和大小滚动日志 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${logHome}/default.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+            <maxFileSize>2GB</maxFileSize>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logPattern}</pattern>
+        </encoder>
+    </appender>
 
-    <!-- Strictly speaking, the level attribute is not necessary since -->
-    <!-- the level of the root level is set to DEBUG by default.       -->
+    <!-- ERROR日志 -->
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 按照时间和大小滚动日志 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${logHome}/error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+            <maxFileSize>2GB</maxFileSize>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logPattern}</pattern>
+        </encoder>
+        <!-- 过滤只接受error日志 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>error</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
     <root level="INFO">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="console" />
+        <appender-ref ref="default" />
+        <appender-ref ref="error" />
     </root>
 </configuration>

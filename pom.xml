@@ -99,12 +99,12 @@
             <version>3.12.0</version>
         </dependency>
 
-        <!-- 提供logback编码器、布局和附加器以记录JSON和Jackson支持的其他格式 -->
-        <dependency>
-            <groupId>net.logstash.logback</groupId>
-            <artifactId>logstash-logback-encoder</artifactId>
-            <version>7.2</version>
-        </dependency>
+<!--        &lt;!&ndash; 提供logback编码器、布局和附加器以记录JSON和Jackson支持的其他格式 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>net.logstash.logback</groupId>-->
+<!--            <artifactId>logstash-logback-encoder</artifactId>-->
+<!--            <version>7.2</version>-->
+<!--        </dependency>-->
 
         <!-- Fastjson是一个用Java编写的JSON处理器（JSON解析器+JSON生成器）-->
         <dependency>
