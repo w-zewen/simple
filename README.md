@@ -41,4 +41,13 @@ http {
         }
 }
 
+Git
+1、提交github.com超时
+ 提交代码到github.com时经常性的超时
+【fatal: unable to access 'https://github.com/w-zewen/simple.git/': Failed to connect to github.com port 443 after 75026 ms: Operation timed out】
+ 解决方案：
+ a、运行命令：
+ wzw@wzwdeMacBook-Pro ~ % git config --global --unset http.proxy
+ b、再次提交就可以了
+
 
