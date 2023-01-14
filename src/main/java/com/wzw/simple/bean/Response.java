@@ -30,11 +30,11 @@ public class Response<T> implements Serializable {
     }
 
     public static Response success(Object data){
-        return new Response(success, "success", data);
+        return new Response<>(success, "success", data);
     }
 
     public static Response fail(String message){
-        return new Response(fail, message, null);
+        return new Response<>(fail, message, null);
     }
 
 }

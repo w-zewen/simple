@@ -43,8 +43,9 @@ public class UserController {
     public Response<Paging<List<User>>> page(@RequestParam(name = "username", required = false) String username,
                                              @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
                                              @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize){
+        log.info("UserController page in username={}, pageNo={}, pageSize={}", username, pageNo, pageSize);
         Paging<List<User>> page = userService.page(username, pageNo, pageSize);
-        log.info("page={}", JSONObject.toJSONString(page));
+        log.info("UserController page out result={}", JSONObject.toJSONString(page));
         return Response.success(page);
     }
 

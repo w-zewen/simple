@@ -78,12 +78,14 @@
             <artifactId>mapper</artifactId>
             <version>4.2.2</version>
         </dependency>
+
         <!-- 分页插件 PageHelper Spring Boot Starter -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.4.6</version>
         </dependency>
+
         <!-- mybatis代码生成器 -->
         <dependency>
             <groupId>org.mybatis.generator</groupId>
@@ -99,13 +101,6 @@
             <version>3.12.0</version>
         </dependency>
 
-<!--        &lt;!&ndash; 提供logback编码器、布局和附加器以记录JSON和Jackson支持的其他格式 &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>net.logstash.logback</groupId>-->
-<!--            <artifactId>logstash-logback-encoder</artifactId>-->
-<!--            <version>7.2</version>-->
-<!--        </dependency>-->
-
         <!-- Fastjson是一个用Java编写的JSON处理器（JSON解析器+JSON生成器）-->
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
@@ -118,6 +113,15 @@
 
     <build>
         <plugins>
+            <!-- maven打包插件 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 设置executable为true，自动启动脚本 -->
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
             <!-- mapper代码生成插件 -->
             <plugin>
                 <!-- mybatis代码生成插件 -->

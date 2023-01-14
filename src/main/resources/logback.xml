@@ -5,12 +5,13 @@
     <!-- 读取spring容器中的属性，这里是获取日志打印的级别 -->
     <springProperty scope="context" name="logLevel" source="logLevel" defaultValue="INFO" />
     <springProperty scope="context" name="appName" source="appName" />
+    <springProperty scope="context" name="env" source="env" />
     <!-- 自定义logger转换器 -->
     <conversionRule conversionWord="traceId" converterClass="com.wzw.simple.log.convert.TraceIdConvert"/>
 
     <!-- 日志打印格式 -->
     <property name="logPattern"
-              value="{&quot;date&quot;:&quot;%date{yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS}&quot;,&quot;level&quot;:&quot;%level&quot;,&quot;appName&quot;:&quot;${appName}&quot;,&quot;traceId&quot;:&quot;%traceId&quot;,&quot;thread&quot;:&quot;%thread&quot;,&quot;logger&quot;:&quot;%logger&quot;,&quot;class&quot;:&quot;%class&quot;,&quot;method&quot;:&quot;%method&quot;,&quot;line&quot;:&quot;%line&quot;,&quot;message&quot;:&quot;%replace(%msg){'&quot;', '`'} %ex&quot;}%n" />
+              value="{&quot;date&quot;:&quot;%date{yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS}&quot;,&quot;level&quot;:&quot;%level&quot;,&quot;appName&quot;:&quot;${appName}&quot;,env&quot;:&quot;${env}&quot;,&quot;traceId&quot;:&quot;%traceId&quot;,&quot;thread&quot;:&quot;%thread&quot;,&quot;logger&quot;:&quot;%logger&quot;,&quot;class&quot;:&quot;%class&quot;,&quot;method&quot;:&quot;%method&quot;,&quot;line&quot;:&quot;%line&quot;,&quot;message&quot;:&quot;%replace(%msg){'&quot;', '`'} %ex&quot;}%n" />
 
     <!-- 控制台日志 -->
     <appender name="console" class="ch.qos.logback.core.rolling.RollingFileAppender">

@@ -4,15 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="786e072f-9ea4-4e95-b0ab-618b460e3a4f" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/logHome_IS_UNDEFINED/default.2023-01-03.0.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logHome_IS_UNDEFINED/error.2023-01-03.0.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wzw/simple/log/convert/TraceIdConvert.java" afterDir="false" />
+    <list default="true" id="786e072f-9ea4-4e95-b0ab-618b460e3a4f" name="Changes" comment="logback">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logHome_IS_UNDEFINED/default.2023-01-13.0.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logHome_IS_UNDEFINED/error.2023-01-13.0.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wzw/simple/config/InterceptConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wzw/simple/context/ThreadContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wzw/simple/context/ThreadContextEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wzw/simple/intercept/WebIntercept.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apollo/simple/config-cache/simple+default+application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/apollo/simple/config-cache/simple+default+application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apollo/simple/config-cache/simple+default+business.properties" beforeDir="false" afterPath="$PROJECT_DIR$/apollo/simple/config-cache/simple+default+business.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logHome_IS_UNDEFINED/default.2023-01-03.0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logHome_IS_UNDEFINED/default.2023-01-04.0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logHome_IS_UNDEFINED/error.2023-01-03.0.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple.iml" beforeDir="false" afterPath="$PROJECT_DIR$/simple.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wzw/simple/bean/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wzw/simple/bean/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wzw/simple/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wzw/simple/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wzw/simple/log/convert/TraceIdConvert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wzw/simple/log/convert/TraceIdConvert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wzw/simple/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wzw/simple/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
     </list>
@@ -109,12 +119,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.SimpleApplication">
-    <configuration name="MyBatisPlusGeneratorUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wzw.simple.util.MyBatisPlusGeneratorUtil" />
+    <configuration name="ThreadContext" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wzw.simple.context.ThreadContext" />
       <module name="simple" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wzw.simple.util.*" />
+          <option name="PATTERN" value="com.wzw.simple.context.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -176,17 +186,26 @@
         </pattern>
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.wzw.simple.SimpleApplication" />
+      <option name="VM_PARAMETERS" value="-Denv=dev" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.ThreadContext" />
+      <item itemvalue="Application.UserController" />
+      <item itemvalue="JUnit.StoreDBMyBatisPlusGenerator.generatorCode" />
+      <item itemvalue="JUnit.UserDBMyBatisPlusGenerator.generatorCode" />
+      <item itemvalue="Spring Boot.SimpleApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.SimpleApplication" />
+        <item itemvalue="Application.ThreadContext" />
         <item itemvalue="JUnit.UserDBMyBatisPlusGenerator.generatorCode" />
         <item itemvalue="JUnit.StoreDBMyBatisPlusGenerator.generatorCode" />
         <item itemvalue="Application.UserController" />
-        <item itemvalue="Application.MyBatisPlusGeneratorUtil" />
       </list>
     </recent_temporary>
   </component>
@@ -206,7 +225,10 @@
       <workItem from="1672230125204" duration="667000" />
       <workItem from="1672409781819" duration="292000" />
       <workItem from="1672410080365" duration="1849000" />
-      <workItem from="1672731706145" duration="5247000" />
+      <workItem from="1672731706145" duration="8797000" />
+      <workItem from="1673230823474" duration="7430000" />
+      <workItem from="1673438202362" duration="10029000" />
+      <workItem from="1673527432243" duration="5282000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1671779264832</created>
@@ -313,7 +335,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672411364711</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="logback">
+      <created>1672800110876</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1672800110876</updated>
+    </task>
+    <task id="LOCAL-00017" summary="logback">
+      <created>1672800121121</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1672800121121</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +378,8 @@
     <MESSAGE value="分页查询" />
     <MESSAGE value="json log" />
     <MESSAGE value="commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <MESSAGE value="logback" />
+    <option name="LAST_COMMIT_MESSAGE" value="logback" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -357,5 +394,10 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/simple$SimpleApplication.ic" NAME="SimpleApplication Coverage Results" MODIFIED="1673506249072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.wzw.simple.*</FILTER>
+    </SUITE>
   </component>
 </project>
